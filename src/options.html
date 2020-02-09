@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Rollie</title>
+    <link rel="stylesheet" href="../assets/materialize/css/materialize.min.css" />
 </head>
 <body>
-
+<div class="container">
+    <div class="row">
+        <div class="input-field col s12">
+            <input id="minutes" type="number" min="1" class="validate" autofocus>
+            <label class="active" for="minutes">Set Tab Time</label>
+        </div>
+    </div>
+    <div class="row">
+        <a class="right waves-effect waves-light btn btn-flat" id="save-options">Save</a>
+    </div>
+</div>
+<script src="../assets/jQuery/jquery-3.4.1.min.js"></script>
+<script src="../assets/materialize/js/materialize.min.js"></script>
+<script src="js/options.js"></script>
 </body>
 </html>
