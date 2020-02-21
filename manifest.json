@@ -15,6 +15,10 @@
   "options_ui": {
     "page": "src/options.html"
   },
+  "background": {
+    "scripts": ["src/js/background.js"],
+    "persistent": false
+  },
   "permissions": [
     "storage",
     "tabs"

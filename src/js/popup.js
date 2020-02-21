@@ -1,6 +1,3 @@
-let current = 0;
-let intervalID;
-
 $("#startTabShow").click(() => {
 	console.log("Starting show.");
 	chrome.tabs.query({}, (tabs) => {
@@ -15,20 +12,21 @@ $("#startTabShow").click(() => {
 });
 
 $("#stopTabShow").click(() => {
-	if (intervalID) {
-		clearInterval(intervalID);
-	}
+	const message = {
+		messageType: "stop"
+	};
+	chrome.runtime.sendMessage(message, callback);
 });
 
 const startShow = (tabs, timeout) => {
-	const noOfTabs = tabs.length;
-	console.log("No of Tabs", noOfTabs);
-	setInterval(changeTabs, timeout * 60 * 1000, tabs, noOfTabs);
+	const message = {
+		messageType: "start",
+		tabs: tabs,
+		timeout: timeout
+	};
+	chrome.runtime.sendMessage(message, callback);
 };
 
-const changeTabs = (tabs, maxTabs) => {
-	current = (current < maxTabs) ? current: 0;
-	console.log("Current", current);
-	const tabID = tabs[0].id;
-	chrome.tabs.update(tabID, {active:true, highlighted: true});
+const callback = (response) => {
+	console.log(response);
 };
