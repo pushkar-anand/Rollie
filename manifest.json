@@ -1,6 +1,6 @@
 {
   "name": "Rollie",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Cycles the current set of tabs as a slide show.",
   "manifest_version": 2,
   "browser_action": {
