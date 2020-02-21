@@ -9,4 +9,4 @@ Chrome extension to cycle the current set of tabs as a slide show
 5. Check the extension in the browser address bar.
 
 # Contributing 
-To start contributing to the repo checkout [CONTRIBUTING.md](https://github.com/pushkar-anand/InsTab/blob/develop/CONTRIBUTING.md)
+To start contributing to the repo checkout [CONTRIBUTING.md](https://github.com/pushkar-anand/Rollie/blob/master/CONTRIBUTING.md)
