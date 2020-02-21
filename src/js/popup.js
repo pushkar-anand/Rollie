@@ -4,8 +4,9 @@ $("#startTabShow").click(() => {
 		console.log("Open Tabs", tabs);
 		storage.get(null, (data) => {
 			const TIMEOUT = data[TAB_TIME_KEY] || DEFAULT_TIME;
-			console.log("Timeout", TIMEOUT);
-			startShow(tabs, TIMEOUT);
+			const FULL_SCREEN = data[FULL_SCREEN_KEY] || DEFAULT_FULL_SCREEN;
+			console.log("Saved Data", data);
+			startShow(tabs, TIMEOUT, FULL_SCREEN);
 		});
 
 	} );
@@ -18,15 +19,20 @@ $("#stopTabShow").click(() => {
 	chrome.runtime.sendMessage(message, callback);
 });
 
-const startShow = (tabs, timeout) => {
-	const message = {
-		messageType: "start",
-		tabs: tabs,
-		timeout: timeout
-	};
-	chrome.runtime.sendMessage(message, callback);
+const startShow = (tabs, timeout, fullscreen) => {
+	chrome.windows.getCurrent({}, (window) => {
+		const message = {
+			messageType: "start",
+			tabs: tabs,
+			timeout: timeout,
+			windowID: window.id,
+			fullscreen: fullscreen
+		};
+		chrome.runtime.sendMessage(message, callback);
+	});
 };
 
 const callback = (response) => {
 	console.log(response);
+	window.close();
 };
